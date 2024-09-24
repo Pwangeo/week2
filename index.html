@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고양이를 만져보세요</title>
+    <style>
+        body {margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        }
+        #cat-image {
+            position: relative;
+            cursor: pointer;
+        }
+        .hotspot {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+    		cursor: pointer
+        }
+        #head {
+            top: 22%;
+            left: 29%;
+            width: 10%;
+            height: 20%;
+        }
+        #belly {
+            top: 45%;
+            left: 40%;
+            width: 20%;
+            height: 20%;
+        }
+        #tail {
+            top: 70%;
+            left: 55%;
+            width: 10%;
+            height: 20%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cat-image">
+        <img src="cat.png" alt="고양이" width="1200">
+        <div id="head" class="hotspot" onclick="playAudio('audioA'); "></div>
+        <div id="belly" class="hotspot" onclick="playAudio('audioC'); "></div>
+        <div id="tail" class="hotspot" onclick="playAudio('audioB'); "></div>
+    </div>
+
+    <audio id="audioA" src="audioA.mp3"></audio>
+    <audio id="audioB" src="audioB.mp3"></audio>
+    <audio id="audioC" src="audioC.mp3"></audio>
+
+    <script>
+        let currentAudio = null;
+
+        function playAudio(audioId) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0
+            }
+
+       
+            currentAudio = document.getElementById(audioId);
+            currentAudio.play();
+        }
+
+    </script>
+
+</body>
+</html>
